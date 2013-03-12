@@ -25,10 +25,10 @@ oci for go. It's goci!
                 log.Println("Oracle Driver example")
 
                 os.Setenv("NLS_LANG", "")
-                dsn := os.Getenv("ORACLE_DSN")
-        	if dsn == "" {
+                dsn := os.Getenv("ORACLE_DSN") // 把用户名/口令@SID  定义到此环境变量中
+                if dsn == "" {
         		t.Fatal("To run tests, set the ORACLE_DSN environment variable.")
-        	}
+                }
         	db, _ := driver.Open(dsn)
 
                 rows, err := db.Query("select 3.14, 'foo' from dual")
