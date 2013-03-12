@@ -5,7 +5,9 @@ package goci
 #include <stdlib.h>
 #include <string.h>
 
-#cgo pkg-config: oci8
+#cgo CFLAGS: -I/home/oracle/app/oracle/product/11.2.0/client_1/rdbms/public
+#cgo LDFLAGS: -lclntsh -L/home/oracle/app/oracle/product/11.2.0/client_1/lib
+
 */
 import "C"
 
