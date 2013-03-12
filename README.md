@@ -29,7 +29,7 @@ oci for go. It's goci!
                 if dsn == "" {
         		os.Exit(2) // 出错退出
                 }
-        	db, _ := sql.Open("goci",dsn)
+                db, _ := sql.Open("goci",dsn)
 
                 rows, err := db.Query("select 3.14, 'foo' from dual")
                 if err != nil {
