@@ -27,9 +27,9 @@ oci for go. It's goci!
                 os.Setenv("NLS_LANG", "")
                 dsn := os.Getenv("ORACLE_DSN") // 把用户名/口令@SID  定义到此环境变量中
                 if dsn == "" {
-        		t.Fatal("To run tests, set the ORACLE_DSN environment variable.")
+        		os.Exit(2) // 出错退出
                 }
-        	db, _ := driver.Open(dsn)
+        	db, _ := sql.Open("goci",dsn)
 
                 rows, err := db.Query("select 3.14, 'foo' from dual")
                 if err != nil {
@@ -66,3 +66,5 @@ oci for go. It's goci!
         }
 
 
+        此程序在 redhat server 6 的 64 位机器上编译测试正常通过。
+                                2013.03.12    晨笛记录
