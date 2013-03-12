@@ -13,7 +13,7 @@ oci for go. It's goci!
 
         import (
                 "database/sql"
-                _ "goci"
+                _ "goci"  // 根据实际部署情况修改
                 "os"
                 "log"
         )
@@ -25,12 +25,12 @@ oci for go. It's goci!
                 log.Println("Oracle Driver example")
 
                 os.Setenv("NLS_LANG", "")
+                dsn := os.Getenv("ORACLE_DSN")
+        	if dsn == "" {
+        		t.Fatal("To run tests, set the ORACLE_DSN environment variable.")
+        	}
+        	db, _ := driver.Open(dsn)
 
-                // 用户名/密码@实例名  跟sqlplus的conn命令类似
-                db, err := sql.Open("oci8", "system/123456@XE")
-                if err != nil {
-                        log.Fatal(err)
-                }
                 rows, err := db.Query("select 3.14, 'foo' from dual")
                 if err != nil {
                         log.Fatal(err)
