@@ -27,6 +27,10 @@ oci for go. It's goci!
 * 
 ### ORACLE_HOME 以您系统实际情况进行修改。
 
+* LD_LIBRARY_PATH 也需要添加，比如我的 rpm 装完后，/usr/include/oracle/12.1/client64  否则有些头文件找不到
+* export CGO_CFLAGS=-I/usr/include/oracle/12.1/client64
+* export CGO_LDFLAGS=-L/usr/lib/oracle/12.1/client64/lib
+
 例子：
         package main
 
